@@ -1,0 +1,22 @@
+{
+    "name": "olbie/miniq",
+    "description": "Mini Queue",
+    "type": "library",
+    "license": "GPL-3.0-or-later",
+    "autoload": {
+        "psr-4": {
+            "olbie\\MiniQ\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Oleksii Bielokudrenko",
+            "email": "oleksii.bielokudrenko@gmail.com"
+        }
+    ],
+    "require": {
+        "react/socket": "^1.15",
+        "react/event-loop": "^1.5",
+        "php": "8.1"
+    }
+}
