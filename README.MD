@@ -82,6 +82,14 @@ for ($i = 0; $i < $totalTask; $i++) {
 }
 ```
 
+## TO DO
+- [ ] write test
+- [x] write license file
+- [ ] translate docs
+  - [ ] Ukraine
+  - [x] Russian
+- [ ] make symfony bandle
+
 ## License
 
 GPL-3.0-or-later. See the [LICENSE](./LICENSE.TXT) file for more details.
