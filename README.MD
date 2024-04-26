@@ -84,7 +84,7 @@ for ($i = 0; $i < $totalTask; $i++) {
 
 ## License
 
-GPL-3.0-or-later. See the LICENSE file for more details.
+GPL-3.0-or-later. See the [LICENSE](./LICENSE.TXT) file for more details.
 
 ## Contributing
 
