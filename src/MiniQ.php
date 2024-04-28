@@ -12,8 +12,6 @@ class MiniQ
 		if (!$dirForSock) $dirForSock = sys_get_temp_dir();
 		if (!is_dir($dirForSock) && !mkdir($dirForSock)) throw new \Exception('Bad path for socket');
 		$this->dirForSock = $dirForSock;
-		$path = $dirForSock . '/' . self::SOCK_FILE_NAME;
-		if (file_exists($path)) unlink($path);
 	}
 
 	public function createServer(): ServerInterface
@@ -29,5 +27,10 @@ class MiniQ
 	public function createWorkerServer(float $delay = 0.1): WorkerServerInterface
 	{
 		return new WorkerServer($this->createClient(), $delay);
+	}
+
+	public function createBalancer(): BalancerInterface
+	{
+		return new Balancer($this->dirForSock);
 	}
 }

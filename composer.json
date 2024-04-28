@@ -8,6 +8,11 @@
             "olbie\\MiniQ\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "tests\\": "tests/"
+        }
+    },
     "authors": [
         {
             "name": "Oleksii Bielokudrenko",

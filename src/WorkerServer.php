@@ -16,18 +16,17 @@ class WorkerServer implements WorkerServerInterface
 
 	public function run(): void
 	{
-		while (true) {
+		Loop::addPeriodicTimer($this->delay, function () {
 			$this->client->get(function (string $jobStr) {
 				/** @var Task $job */
 				if ($jobStr === SocketServer::TXT_FOR_NONE_DATA) return;
 				$job = unserialize($jobStr);
 				if ($job && !$job->execute() && $job->isAllowRestart()) {
-					$this->client->set($job);
+					$this->client->set($job, true);
 				}
 
-			});
-			Loop::run();
-			usleep(1000000 * $this->delay);
-		}
+			}, true);
+		});
+		Loop::run();
 	}
 }

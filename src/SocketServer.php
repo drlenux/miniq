@@ -12,6 +12,7 @@ class SocketServer implements ServerInterface
 	private UnixServer $server;
 	public const TXT_FOR_READ_DATA = 'GET';
 	public const TXT_FOR_NONE_DATA = 'NONE';
+	public const TXT_FOR_GET_COUNT_IN_QUEUE = 'COUNT';
 
 	public function __construct($socketPath)
 	{
@@ -29,8 +30,13 @@ class SocketServer implements ServerInterface
 				if ($data === self::TXT_FOR_READ_DATA) {
 					$task = array_shift($this->queue);
 					$connection->write($task ?? self::TXT_FOR_NONE_DATA);
+					echo '>';
+				} elseif ($data === self::TXT_FOR_GET_COUNT_IN_QUEUE) {
+					$connection->write(count($this->queue));
+					echo '.';
 				} else {
 					$this->queue[] = $data;
+					echo '<';
 					$connection->write("Task added: $data");
 				}
 			});
